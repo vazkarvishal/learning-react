@@ -4,34 +4,31 @@ console.log('App.js is running');
 
 // JSX - JavaScript XML
 
+var app = {
+  title: 'Learning React',
+  subtitle: 'This is a test which needs to pass'
+};
 var template = React.createElement(
   'div',
   null,
   React.createElement(
     'h1',
     null,
-    'Vishal Vazkar'
+    app.title
   ),
   React.createElement(
     'p',
     null,
-    'Hello world'
-  ),
-  React.createElement(
-    'ol',
-    null,
-    React.createElement(
-      'li',
-      null,
-      'Item one'
-    ),
-    React.createElement(
-      'li',
-      null,
-      'Item two'
-    )
+    'Description: ',
+    app.subtitle
   )
 );
+
+var user = {
+  name: 'Vishal Vazkar',
+  age: 26,
+  location: 'Leicester'
+};
 
 var templateTwo = React.createElement(
   'div',
@@ -39,19 +36,21 @@ var templateTwo = React.createElement(
   React.createElement(
     'h1',
     null,
-    'Vishal Vazkar'
+    user.name
   ),
   React.createElement(
     'p',
     null,
-    'Age: 26'
+    'Age: ',
+    user.age
   ),
   React.createElement(
     'p',
     null,
-    'Location: Leicester'
+    'Location: ',
+    user.location
   )
 );
 var appRoot = document.getElementById('app');
 
-ReactDOM.render(templateTwo, appRoot);
+ReactDOM.render(template, appRoot);
