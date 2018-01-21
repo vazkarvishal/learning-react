@@ -6,7 +6,8 @@ console.log('App.js is running');
 
 var app = {
   title: 'Learning React',
-  subtitle: 'This is a test which needs to pass'
+  subtitle: 'This is a test which needs to pass',
+  options: ['One', 'Two']
 };
 var template = React.createElement(
   'div',
@@ -16,17 +17,36 @@ var template = React.createElement(
     null,
     app.title
   ),
-  React.createElement(
+  app.subtitle && React.createElement(
     'p',
     null,
     'Description: ',
     app.subtitle
+  ),
+  React.createElement(
+    'p',
+    null,
+    app.options.length > 0 ? 'Here are your options' : 'No Options'
+  ),
+  React.createElement(
+    'ol',
+    null,
+    React.createElement(
+      'li',
+      null,
+      'Option 1'
+    ),
+    React.createElement(
+      'li',
+      null,
+      'Option 2'
+    )
   )
 );
 
 var user = {
   name: 'Vishal Vazkar',
-  age: 26,
+  age: 19,
   location: 'Leicester'
 };
 
@@ -36,9 +56,9 @@ var templateTwo = React.createElement(
   React.createElement(
     'h1',
     null,
-    user.name
+    user.name ? user.name : 'Anonymous'
   ),
-  React.createElement(
+  user.age && user.age >= 18 && React.createElement(
     'p',
     null,
     'Age: ',
