@@ -1,76 +1,41 @@
 'use strict';
 
-console.log('App.js is running');
+var nameLet = 'Vishal';
 
-// JSX - JavaScript XML
+console.log('nameLet:', nameLet);
 
-var app = {
-  title: 'Learning React',
-  subtitle: 'This is a test which needs to pass',
-  options: ['One', 'Two']
-};
-var template = React.createElement(
-  'div',
-  null,
-  React.createElement(
-    'h1',
-    null,
-    app.title
-  ),
-  app.subtitle && React.createElement(
-    'p',
-    null,
-    'Description: ',
-    app.subtitle
-  ),
-  React.createElement(
-    'p',
-    null,
-    app.options.length > 0 ? 'Here are your options' : 'No Options'
-  ),
-  React.createElement(
-    'ol',
-    null,
-    React.createElement(
-      'li',
-      null,
-      'Option 1'
-    ),
-    React.createElement(
-      'li',
-      null,
-      'Option 2'
-    )
-  )
-);
+var nameConst = 'Vishal Vazkar';
 
-var user = {
-  name: 'Vishal Vazkar',
-  age: 19,
-  location: 'Leicester'
-};
+function getPetName() {
+  var petName = 'Simba';
+  return petName;
+}
 
-var templateTwo = React.createElement(
-  'div',
-  null,
-  React.createElement(
-    'h1',
-    null,
-    user.name ? user.name : 'Anonymous'
-  ),
-  user.age && user.age >= 18 && React.createElement(
-    'p',
-    null,
-    'Age: ',
-    user.age
-  ),
-  React.createElement(
-    'p',
-    null,
-    'Location: ',
-    user.location
-  )
-);
-var appRoot = document.getElementById('app');
+console.log(getPetName());
 
-ReactDOM.render(template, appRoot);
+// Block Scoping
+// Block Scoping is not the same as Function Scoping
+// IF statement - Block, Function - getPetName()
+// const and let are block scoped, var is not BLOCK scoped but only function scoped
+
+var fullName = 'Vishal Vazkar';
+
+if (fullName) {
+  var firstName = fullName.split(' ')[0];
+  console.log(firstName);
+}
+
+console.log('Block Scope Test Fail Example:', firstName);
+
+// using let and const now
+var fullName2 = 'Vishal Vazkar';
+// If this let is defined in the if statement block, the outer console log to print the firstName2 will fail.
+// That is the advantage of using let and const - the scope is very specific 
+var firstName2 = '';
+
+if (fullName2) {
+  firstName2 = fullName2.split(' ')[0];
+  console.log(firstName2);
+}
+
+console.log('Block Scope Test Pass Example:', firstName2);
