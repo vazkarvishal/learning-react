@@ -19,19 +19,28 @@ const template = (
   </div>
 );
 
-const user = {
-  name: 'Vishal Vazkar',
-  age: 19,
-  location: 'Leicester'
-};
+let count = 0
+const addOne = () => {
+  console.log('Add one')
+}
+
+const minusOne = () => {
+  console.log('Minus one')
+}
+
+const reset = () => {
+  console.log('reset counter')
+}
 
 const templateTwo = (
   <div>
-    <h1>{user.name ? user.name : 'Anonymous'}</h1>
-    {(user.age && user.age >= 18) && <p>Age: {user.age}</p>}
-    <p>Location: {user.location}</p>
+    <h1>Count: {count}</h1>
+    <button onClick={addOne}>+1</button>
+    <button onClick={reset}>reset</button>
+    <button onClick={minusOne}>-1</button>
   </div>
 );
+
 const appRoot = document.getElementById('app');
 
-ReactDOM.render(template, appRoot);
+ReactDOM.render(templateTwo, appRoot);

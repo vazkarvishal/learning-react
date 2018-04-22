@@ -1,41 +1,88 @@
 'use strict';
 
-var nameLet = 'Vishal';
+console.log('App.js is running');
 
-console.log('nameLet:', nameLet);
+// JSX - JavaScript XML
 
-var nameConst = 'Vishal Vazkar';
+var app = {
+  title: 'Learning React',
+  subtitle: 'This is a test which needs to pass',
+  options: ['One', 'Two']
+};
+var template = React.createElement(
+  'div',
+  null,
+  React.createElement(
+    'h1',
+    null,
+    app.title
+  ),
+  app.subtitle && React.createElement(
+    'p',
+    null,
+    'Description: ',
+    app.subtitle
+  ),
+  React.createElement(
+    'p',
+    null,
+    app.options.length > 0 ? 'Here are your options' : 'No Options'
+  ),
+  React.createElement(
+    'ol',
+    null,
+    React.createElement(
+      'li',
+      null,
+      'Option 1'
+    ),
+    React.createElement(
+      'li',
+      null,
+      'Option 2'
+    )
+  )
+);
 
-function getPetName() {
-  var petName = 'Simba';
-  return petName;
-}
+var count = 0;
+var addOne = function addOne() {
+  console.log('Add one');
+};
 
-console.log(getPetName());
+var minusOne = function minusOne() {
+  console.log('Minus one');
+};
 
-// Block Scoping
-// Block Scoping is not the same as Function Scoping
-// IF statement - Block, Function - getPetName()
-// const and let are block scoped, var is not BLOCK scoped but only function scoped
+var reset = function reset() {
+  console.log('reset counter');
+};
 
-var fullName = 'Vishal Vazkar';
+var templateTwo = React.createElement(
+  'div',
+  null,
+  React.createElement(
+    'h1',
+    null,
+    'Count: ',
+    count
+  ),
+  React.createElement(
+    'button',
+    { onClick: addOne },
+    '+1'
+  ),
+  React.createElement(
+    'button',
+    { onClick: reset },
+    'reset'
+  ),
+  React.createElement(
+    'button',
+    { onClick: minusOne },
+    '-1'
+  )
+);
 
-if (fullName) {
-  var firstName = fullName.split(' ')[0];
-  console.log(firstName);
-}
+var appRoot = document.getElementById('app');
 
-console.log('Block Scope Test Fail Example:', firstName);
-
-// using let and const now
-var fullName2 = 'Vishal Vazkar';
-// If this let is defined in the if statement block, the outer console log to print the firstName2 will fail.
-// That is the advantage of using let and const - the scope is very specific 
-var firstName2 = '';
-
-if (fullName2) {
-  firstName2 = fullName2.split(' ')[0];
-  console.log(firstName2);
-}
-
-console.log('Block Scope Test Pass Example:', firstName2);
+ReactDOM.render(templateTwo, appRoot);
