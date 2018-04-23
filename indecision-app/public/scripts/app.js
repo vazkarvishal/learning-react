@@ -7,7 +7,7 @@ console.log('App.js is running');
 var app = {
   title: 'Learning React',
   subtitle: 'This is a test which needs to pass',
-  options: ['One', 'Two']
+  options: []
 };
 
 var onFormSubmit = function onFormSubmit(e) {
@@ -25,6 +25,7 @@ var clearOptions = function clearOptions() {
   app.options = [];
   renderFormExample();
 };
+
 var appRoot = document.getElementById('app');
 var renderFormExample = function renderFormExample() {
   var template = React.createElement(
@@ -54,16 +55,14 @@ var renderFormExample = function renderFormExample() {
     React.createElement(
       'ol',
       null,
-      React.createElement(
-        'li',
-        null,
-        'Option 1'
-      ),
-      React.createElement(
-        'li',
-        null,
-        'Option 2'
-      )
+      app.options.map(function (option) {
+        return React.createElement(
+          'li',
+          { key: option },
+          'Option: ',
+          option
+        );
+      })
     ),
     React.createElement(
       'form',

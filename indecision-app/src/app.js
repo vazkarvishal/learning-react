@@ -5,7 +5,7 @@ console.log ('App.js is running');
 const app = {
   title: 'Learning React',
   subtitle: 'This is a test which needs to pass',
-  options: ['One','Two']
+  options: []
 };
 
 const onFormSubmit = (e) => {
@@ -23,6 +23,7 @@ const clearOptions = () => {
   app.options = []
   renderFormExample()
 }
+
 const appRoot = document.getElementById('app');
 const renderFormExample = () => {
   const template = (
@@ -32,8 +33,12 @@ const renderFormExample = () => {
       <p>{app.options.length > 0 ? 'Here are your options' : 'No Options'}</p>
       <p>{app.options.length}</p>
       <ol>
-        <li>Option 1</li>
-        <li>Option 2</li>
+        {
+          app.options.map((option) => {
+            return <li key={option}>Option: {option}</li>
+          })
+
+        }
       </ol>
     <form  onSubmit={onFormSubmit}>
       <input type="test" name="option"/>
