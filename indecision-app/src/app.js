@@ -12,9 +12,12 @@ const onFormSubmit = (e) => {
   e.preventDefault()
   console.log('Form has been submitted')
   const option = e.target.elements.option.value
+
+
   if (option) {
     console.log('text value is:'+ option)
     app.options.push(option)
+    e.target.elements.option.value = ''
     renderFormExample()
   }
 }
@@ -41,7 +44,7 @@ const renderFormExample = () => {
         }
       </ol>
     <form  onSubmit={onFormSubmit}>
-      <input type="test" name="option"/>
+      <input type="text" name="option"/>
       <button>Add option</button>
       <button onClick={clearOptions}>Remove all options</button>
     </form>

@@ -14,9 +14,11 @@ var onFormSubmit = function onFormSubmit(e) {
   e.preventDefault();
   console.log('Form has been submitted');
   var option = e.target.elements.option.value;
+
   if (option) {
     console.log('text value is:' + option);
     app.options.push(option);
+    e.target.elements.option.value = '';
     renderFormExample();
   }
 };
@@ -67,7 +69,7 @@ var renderFormExample = function renderFormExample() {
     React.createElement(
       'form',
       { onSubmit: onFormSubmit },
-      React.createElement('input', { type: 'test', name: 'option' }),
+      React.createElement('input', { type: 'text', name: 'option' }),
       React.createElement(
         'button',
         null,
