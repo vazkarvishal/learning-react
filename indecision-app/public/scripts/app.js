@@ -109,16 +109,21 @@ var Action = function (_React$Component3) {
 var Options = function (_React$Component4) {
   _inherits(Options, _React$Component4);
 
-  function Options() {
+  // overriding react props to fix the scope of the this variable
+  function Options(props) {
     _classCallCheck(this, Options);
 
-    return _possibleConstructorReturn(this, (Options.__proto__ || Object.getPrototypeOf(Options)).apply(this, arguments));
+    var _this4 = _possibleConstructorReturn(this, (Options.__proto__ || Object.getPrototypeOf(Options)).call(this, props));
+
+    _this4.handleRemoveOptions = _this4.handleRemoveOptions.bind(_this4);
+    return _this4;
   }
 
   _createClass(Options, [{
     key: 'handleRemoveOptions',
     value: function handleRemoveOptions() {
-      alert('handle remove options');
+      console.log(this.props.options);
+      // alert('handle remove options')
     }
   }, {
     key: 'render',

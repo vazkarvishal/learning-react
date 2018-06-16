@@ -41,8 +41,14 @@ class Action extends React.Component {
 
 // Options - Options component here
 class Options extends React.Component {
+  // overriding react props to fix the scope of the this variable
+  constructor(props) {
+    super(props)
+    this.handleRemoveOptions = this.handleRemoveOptions.bind(this)
+  }
   handleRemoveOptions() {
-    alert('handle remove options')
+    console.log(this.props.options)
+    // alert('handle remove options')
   }
   render() {
     return (
